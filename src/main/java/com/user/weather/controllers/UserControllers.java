@@ -1,5 +1,7 @@
 package com.user.weather.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,11 @@ public class UserControllers {
   @PostMapping
   public UserResponseDTO createUser(@RequestBody UserDTO userDTO) {
     return userService.createUser(userDTO);
+  }
+
+  @GetMapping
+  public List<UserResponseDTO> getAllUsers() {
+    return userService.getAllUsers();
   }
 
   @GetMapping("/{id}")

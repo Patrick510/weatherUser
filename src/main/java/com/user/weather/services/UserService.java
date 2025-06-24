@@ -1,5 +1,7 @@
 package com.user.weather.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,17 @@ public class UserService {
     response.setId(user.getId());
     response.setName(user.getName());
     return response;
+  }
+
+  public List<UserResponseDTO> getAllUsers() {
+    List<UserModel> users = userRepository.findAll();
+
+    return users.stream().map(user -> {
+      UserResponseDTO dto = new UserResponseDTO();
+      dto.setId(user.getId());
+      dto.setName(user.getName());
+      return dto;
+    }).toList();
   }
 
   public void deleteUser(Long id) {
