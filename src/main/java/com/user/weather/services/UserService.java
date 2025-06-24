@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.user.weather.dto.UserDTO;
 import com.user.weather.dto.UserResponseDTO;
-import com.user.weather.exceptions.UserNotFound;
+import com.user.weather.errors.UserNotFound;
 import com.user.weather.models.UserModel;
 import com.user.weather.repositories.UserRepository;
 
