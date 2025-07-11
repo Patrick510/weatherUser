@@ -9,7 +9,6 @@ public class SearchHistoryDTO {
   private Long id;
   private String city;
   private String country;
-  private String cep;
   private String weatherDescription;
   private String weatherIcon;
   private Double temperature;

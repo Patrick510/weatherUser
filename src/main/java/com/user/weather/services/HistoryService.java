@@ -27,7 +27,6 @@ public class HistoryService {
         .orElseThrow(() -> new UserNotFound("User not found"));
 
     SearchHistory history = new SearchHistory();
-    history.setCep(dto.getCep());
     history.setCity(dto.getCity());
     history.setCountry(dto.getCountry());
     history.setWeatherDescription(dto.getWeatherDescription());
@@ -50,7 +49,6 @@ public class HistoryService {
       dto.setId(h.getId());
       dto.setCity(h.getCity());
       dto.setCountry(h.getCountry());
-      dto.setCep(h.getCep());
       dto.setWeatherDescription(h.getWeatherDescription());
       dto.setWeatherIcon(h.getWeatherIcon());
       dto.setTemperature(h.getTemperature());

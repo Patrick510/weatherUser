@@ -20,7 +20,6 @@ public class SearchHistory {
 
   private String city;
   private String country; // Novo campo
-  private String cep;
 
   private String weatherDescription;
   private String weatherIcon;
