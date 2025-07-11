@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.user.weather.dto.SearchHistoryDTO;
 import com.user.weather.dto.UserDTO;
 import com.user.weather.dto.UserResponseDTO;
+import com.user.weather.errors.UserNotFound;
+import com.user.weather.models.UserModel;
 import com.user.weather.services.HistoryService;
 import com.user.weather.services.UserService;
 
@@ -38,6 +40,21 @@ public class UserControllers {
   @GetMapping
   public List<UserResponseDTO> getAllUsers() {
     return userService.getAllUsers();
+  }
+
+  @PostMapping("/login")
+  public ResponseEntity<UserResponseDTO> login(@RequestBody UserDTO userDTO) {
+    try {
+      UserModel user = userService.authenticate(userDTO.getName(), userDTO.getPassword());
+
+      UserResponseDTO response = new UserResponseDTO();
+      response.setId(user.getId());
+      response.setName(user.getName());
+
+      return ResponseEntity.ok(response);
+    } catch (UserNotFound e) {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
   }
 
   @GetMapping("/{id}")
