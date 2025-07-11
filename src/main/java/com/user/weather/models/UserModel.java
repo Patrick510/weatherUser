@@ -2,6 +2,7 @@ package com.user.weather.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class UserModel {
   private String name;
   private String password;
 
-  @OneToMany(mappedBy = "user")
-  private List<SearchHistory> searchHistorys; // Deixar parado por enquanto, pois não é necessário para o projeto atual
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<SearchHistory> searchHistories;
+
 }

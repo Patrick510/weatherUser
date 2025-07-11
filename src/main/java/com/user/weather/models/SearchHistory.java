@@ -8,6 +8,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+
 @Entity
 @Data
 public class SearchHistory {
@@ -17,7 +20,12 @@ public class SearchHistory {
   private Long id;
 
   private String city;
-  private String cep;
+
+  @Column(columnDefinition = "TIMESTAMP")
+  private LocalDateTime date;
+
+  private String weather;
+  private String wind;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
