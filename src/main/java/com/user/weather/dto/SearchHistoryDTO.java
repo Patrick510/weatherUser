@@ -8,8 +8,13 @@ import lombok.Data;
 public class SearchHistoryDTO {
   private Long id;
   private String city;
+  private String country;
+  private String cep;
+  private String weatherDescription;
+  private String weatherIcon;
+  private Double temperature;
+  private Double windSpeed;
   private LocalDateTime date;
-  private String weather;
-  private String wind;
-
+  private Double lon;
+  private Double lat;
 }

@@ -1,5 +1,7 @@
 package com.user.weather.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,9 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
-
-import java.time.LocalDateTime;
-import jakarta.persistence.Column;
 
 @Entity
 @Data
@@ -20,12 +19,19 @@ public class SearchHistory {
   private Long id;
 
   private String city;
+  private String country; // Novo campo
+  private String cep;
 
-  @Column(columnDefinition = "TIMESTAMP")
-  private LocalDateTime date;
+  private String weatherDescription;
+  private String weatherIcon;
 
-  private String weather;
-  private String wind;
+  private Double temperature;
+  private Double windSpeed;
+
+  private LocalDateTime date; // Data da consulta
+
+  private Double lon; // coordenadas
+  private Double lat;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
